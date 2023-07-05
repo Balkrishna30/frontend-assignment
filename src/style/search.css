@@ -1,7 +1,30 @@
 .search{
     text-align: center;
     margin-top: 20px;
+    padding: 10px;
+   
 }
+
 input {
     line-height: 30px;
 }
+.search_wrapper{
+    width: 500px;
+    margin: 0 auto ;
+    background-color: #d6d0d0;
+    z-index: 10000;
+    color: black;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+   
+}
+.search_item{
+    margin: 10px 0;
+}
+.search_item .link {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .search_item .link:hover {
+    color: blue;
+  }

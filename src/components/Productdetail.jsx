@@ -7,22 +7,28 @@ function Productdetail() {
   const [productList, setData] = useState();
 
   useEffect(() => {
-    const product = async () => {
-      const response = await fetch('https://fakestoreapi.com/products');
-      const data = await response.json();
-      setData(data);
+    const fetchData = () => {
+      fetch('https://fakestoreapi.com/products')
+        .then(response => response.json())
+        .then(data => {
+          setData(data);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
     };
-    product();
+    fetchData();
   }, []);
+  
 
   return (
     <div>
       {productList ? (
         <div>
-          <h1>{productList[id-1].title}</h1>
+          <h2 style={{ color:'black'}} > {productList[id-1].title} </h2>
           <img src={productList[id-1].image} alt="" style={{ width: '200px' }} />
           <h4>{productList[id-1].description}</h4>
-          <h1>$ {productList[id-1].price}</h1>
+          <h1 style={{ color:'black'}} > $ {productList[id-1].price}</h1>
         </div>
       ) : (
         <div>Loading....</div>

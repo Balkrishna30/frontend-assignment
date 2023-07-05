@@ -6,13 +6,19 @@ function Search() {
   const [searchvalue, setValue] = useState('');
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch('https://fakestoreapi.com/products');
-      const data = await response.json();
-      setProductList(data);
+    const fetchData = () => {
+      fetch('https://fakestoreapi.com/products')
+        .then(response => response.json())
+        .then(data => {
+          setProductList(data);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
     };
     fetchData();
   }, []);
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -27,19 +33,23 @@ function Search() {
           name='searchvalue'
           value={searchvalue}
           onChange={(event) => setValue(event.target.value)}
-          placeholder='Search products...'
+          placeholder='Search products...' style={{width: '400px'}}
         />
-        <input type='submit' value='Submit' />
-
+        <div className='search_wrapper'>
         {productList
           ? searchvalue && productList
               .filter((item) => item.title.toLowerCase().includes(searchvalue.toLowerCase()))
               .map((item) => (
-                <div key={item.id}>
-                  <Link to={`/productdetail/${item.id}`}>{item.title}</Link>
-                </div>
+               <div key={item.id} className='search_item'>
+  <Link to={`/productdetail/${item.id}`} className='link'>
+    {item.title}
+  </Link>
+</div>
+
+               
               ))
           : null}
+          </div>
       </form>
     </div>
   );
