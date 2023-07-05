@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import style from '../style/home.css'
+import React, { useEffect, useState } from 'react';
+import Search from '../components/Search'
+import  '../style/home.css'
 const Home = () => {
     const [productList , setData] = useState()
     useEffect(()=>{
@@ -12,6 +13,7 @@ const Home = () => {
     },[])
   return (
     <>
+    <Search/>
 
    {
     productList  ? 
