@@ -5,7 +5,7 @@ import Productdetail from './components/Productdetail';
 function App() {
   return (
     <div>
-  <BrowserRouter>
+  <BrowserRouter basename="/frontend-assignment">
   <Routes>
   < Route path='/'  element={<Home/>}/>
    < Route path='/productdetail/:id'  element={<Productdetail/>}/>
